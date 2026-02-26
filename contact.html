@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Свяжитесь с нами - контакты магазина Детский Мир">
+    <title>Контакты - Детский Мир</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Детский Мир</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="contact.html" class="nav-link active">Контакты</a></li>
+                <li><a href="delivery.html" class="nav-link">Доставка</a></li>
+                <li><a href="favorites.html" class="nav-link">❤️ Избранное</a></li>
+                <li><a href="cart.html" class="btn btn-primary">🛒 Корзина (0)</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Заголовок -->
+    <section class="section" style="padding-top: 3rem;">
+        <div class="container">
+            <h1 class="section-title">Свяжитесь с нами 📞</h1>
+            <p class="section-subtitle">Мы всегда рады помочь вам!</p>
+        </div>
+    </section>
+
+    <!-- Контактная информация и форма -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+
+                <!-- Контактная информация -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <h2 style="margin-bottom: 0.5rem;">Наши контакты 📍</h2>
+
+                    <div class="card" style="flex: 1;">
+                        <div style="display: flex; align-items: start; gap: 1.5rem;">
+                            <div style="font-size: 2.5rem;">📞</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Телефон</h3>
+                                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">+7 (800)
+                                    555-35-35</p>
+                                <p style="color: var(--gray); font-size: 0.9rem;">Бесплатный звонок по России</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="flex: 1;">
+                        <div style="display: flex; align-items: start; gap: 1.5rem;">
+                            <div style="font-size: 2.5rem;">📧</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Email</h3>
+                                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">
+                                    info@detmir.ru</p>
+                                <p style="color: var(--gray); font-size: 0.9rem;">Ответим в течение 24 часов</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="flex: 1;">
+                        <div style="display: flex; align-items: start; gap: 1.5rem;">
+                            <div style="font-size: 2.5rem;">📍</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Адрес</h3>
+                                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">Москва, ул.
+                                    Детская, 123</p>
+                                <p style="color: var(--gray); font-size: 0.9rem;">Торговый центр "Семья", 2 этаж</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="flex: 1;">
+                        <div style="display: flex; align-items: start; gap: 1.5rem;">
+                            <div style="font-size: 2.5rem;">🕐</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Часы работы</h3>
+                                <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">Пн-Вс: 9:00
+                                    - 21:00</p>
+                                <p style="color: var(--gray); font-size: 0.9rem;">Без выходных и праздников</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Форма обратной связи -->
+                <div style="height: 100%;">
+                    <div class="card" style="height: 100%;">
+                        <h2 style="margin-bottom: 1.5rem;">Напишите нам ✉️</h2>
+
+                        <form id="contactForm" onsubmit="handleSubmit(event)" style="display: flex; flex-direction: column; height: calc(100% - 3.5rem);">
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Ваше имя *</label>
+                                    <input type="text" id="name" class="form-input" placeholder="Иван Иванов" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email *</label>
+                                    <input type="email" id="email" class="form-input" placeholder="ivan@example.com"
+                                        required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Телефон</label>
+                                    <input type="tel" id="phone" class="form-input" placeholder="+7 (999) 123-45-67">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="subject">Тема обращения *</label>
+                                    <select id="subject" class="form-select" required>
+                                        <option value="">Выберите тему</option>
+                                        <option value="order">Вопрос по заказу</option>
+                                        <option value="product">Вопрос о товаре</option>
+                                        <option value="delivery">Доставка</option>
+                                        <option value="return">Возврат товара</option>
+                                        <option value="other">Другое</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" style="flex: 1;">
+                                    <label class="form-label" for="message">Сообщение *</label>
+                                    <textarea id="message" class="form-textarea"
+                                        placeholder="Расскажите, чем мы можем вам помочь..." required style="height: 100%; min-height: 120px;"></textarea>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">
+                                Отправить сообщение
+                            </button>
+                        </form>
+
+                        <div id="successMessage"
+                            style="display: none; margin-top: 1.5rem; padding: 1rem; background: var(--gradient-secondary); color: white; border-radius: var(--border-radius-sm); text-align: center; font-weight: 600;">
+                            ✅ Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Карта (декоративная) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Как нас найти 🗺️</h2>
+
+            <div class="card" style="padding: 0; overflow: hidden; height: 400px;">
+                <div
+                    style="width: 100%; height: 100%; background: var(--gradient-soft); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+                    <div style="font-size: 5rem;">📍</div>
+                    <h3>Москва, ул. Детская, 123</h3>
+                    <p style="color: var(--gray);">Торговый центр "Семья", 2 этаж</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О магазине</h3>
+                    <p>Детский Мир - это более 10 лет опыта в продаже качественных детских товаров. Мы заботимся о
+                        счастье ваших детей!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">О нас</a>
+                    <a href="contact.html">Контакты</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="favorites.html">Избранное</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <a href="catalog.html?category=toys">Игрушки</a>
+                    <a href="catalog.html?category=clothes">Одежда</a>
+                    <a href="catalog.html?category=books">Книги</a>
+                    <a href="catalog.html?category=accessories">Аксессуары</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (800) 555-35-35</p>
+                    <p>📧 info@detmir.ru</p>
+                    <p>📍 Москва, ул. Детская, 123</p>
+                    <p>🕐 Пн-Вс: 9:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Детский Мир. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

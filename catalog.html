@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Каталог детских товаров - игрушки, одежда, книги и аксессуары для детей всех возрастов">
+    <title>Каталог товаров - Детский Мир</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Детский Мир</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="catalog.html" class="nav-link active">Каталог</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                <li><a href="delivery.html" class="nav-link">Доставка</a></li>
+                <li><a href="favorites.html" class="nav-link">❤️ Избранное</a></li>
+                <li><a href="cart.html" class="btn btn-primary">🛒 Корзина (0)</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Заголовок страницы -->
+    <section class="section" style="padding-top: 3rem;">
+        <div class="container">
+            <h1 class="section-title">Каталог товаров 🎁</h1>
+            <p class="section-subtitle">Найдите идеальный подарок для вашего ребенка</p>
+        </div>
+    </section>
+
+    <!-- Фильтры и каталог -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 250px 1fr; gap: 2rem; align-items: start;">
+
+                <!-- Боковая панель с фильтрами -->
+                <aside class="card" style="position: sticky; top: 100px;">
+                    <h3 style="margin-bottom: 1.5rem;">Фильтры</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">Категория</label>
+                        <select class="form-select" id="categoryFilter">
+                            <option value="all">Все категории</option>
+                            <option value="toys">Игрушки</option>
+                            <option value="clothes">Одежда</option>
+                            <option value="books">Книги</option>
+                            <option value="accessories">Аксессуары</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Возраст</label>
+                        <select class="form-select" id="ageFilter">
+                            <option value="all">Любой возраст</option>
+                            <option value="0-2">0-2 года</option>
+                            <option value="3-5">3-5 лет</option>
+                            <option value="6-9">6-9 лет</option>
+                            <option value="10+">10+ лет</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Цена</label>
+                        <select class="form-select" id="priceFilter">
+                            <option value="all">Любая цена</option>
+                            <option value="0-1000">До 1000 ₽</option>
+                            <option value="1000-2000">1000-2000 ₽</option>
+                            <option value="2000-3000">2000-3000 ₽</option>
+                            <option value="3000+">От 3000 ₽</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="applyFilters()">
+                        Применить фильтры
+                    </button>
+                </aside>
+
+                <!-- Сетка товаров -->
+                <div>
+                    <div class="grid grid-3" id="productsGrid">
+                        <!-- Товары загружаются через JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О магазине</h3>
+                    <p>Детский Мир - это более 10 лет опыта в продаже качественных детских товаров. Мы заботимся о
+                        счастье ваших детей!</p>
+                   
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">О нас</a>
+                    <a href="contact.html">Контакты</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="favorites.html">Избранное</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <a href="catalog.html?category=toys">Игрушки</a>
+                    <a href="catalog.html?category=clothes">Одежда</a>
+                    <a href="catalog.html?category=books">Книги</a>
+                    <a href="catalog.html?category=accessories">Аксессуары</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (800) 555-35-35</p>
+                    <p>📧 info@detmir.ru</p>
+                    <p>📍 Москва, ул. Детская, 123</p>
+                    <p>🕐 Пн-Вс: 9:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Детский Мир. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

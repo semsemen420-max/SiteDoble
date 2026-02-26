@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Корзина покупок - Детский Мир">
+    <title>Корзина - Детский Мир</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Детский Мир</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                <li><a href="delivery.html" class="nav-link">Доставка</a></li>
+                <li><a href="favorites.html" class="nav-link">❤️ Избранное</a></li>
+                <li><a href="cart.html" class="btn btn-primary active">🛒 Корзина (0)</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Заголовок страницы -->
+    <section class="section" style="padding-top: 3rem;">
+        <div class="container">
+            <h1 class="section-title">Корзина покупок 🛒</h1>
+            <p class="section-subtitle">Оформите заказ и получите свои товары</p>
+        </div>
+    </section>
+
+    <!-- Корзина -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 350px; gap: 2rem; align-items: start;">
+
+                <!-- Товары в корзине -->
+                <div>
+                    <div id="cartItems">
+                        <!-- Товары загружаются через JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Итоговая информация и форма -->
+                <aside class="card" style="position: sticky; top: 100px;">
+                    <h3 style="margin-bottom: 1.5rem;">Итого</h3>
+
+                    <div
+                        style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 2px solid var(--light-gray);">
+                        <span style="font-size: 1.1rem;">Товары:</span>
+                        <span style="font-size: 1.1rem; font-weight: 600;" id="itemsCount">0</span>
+                    </div>
+
+                    <div
+                        style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray);">
+                        <span style="font-size: 1.3rem; font-weight: 700;">Сумма:</span>
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">
+                            <span id="cartTotal">0</span> ₽
+                        </span>
+                    </div>
+
+                    <!-- Форма оформления заказа -->
+                    <form id="checkoutForm" onsubmit="handleCheckout(event)" style="display: none;">
+                        <h3 style="margin-bottom: 1.5rem;">Оформление заказа</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="orderName">Ваше имя *</label>
+                            <input type="text" id="orderName" class="form-input" placeholder="Иван Иванов" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="orderPhone">Телефон *</label>
+                            <input type="tel" id="orderPhone" class="form-input" placeholder="+7 (999) 123-45-67" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="orderEmail">Email</label>
+                            <input type="email" id="orderEmail" class="form-input" placeholder="ivan@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="orderAddress">Адрес доставки *</label>
+                            <textarea id="orderAddress" class="form-input" 
+                                      placeholder="Город, улица, дом, квартира" 
+                                      style="height: 80px;" required></textarea>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label class="form-label" for="orderComment">Комментарий к заказу</label>
+                            <textarea id="orderComment" class="form-textarea" 
+                                      placeholder="Дополнительные пожелания"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem; font-size: 1.1rem; padding: 1rem;">
+                            Подтвердить заказ
+                        </button>
+
+                        <button type="button" onclick="hideCheckoutForm()" class="btn btn-outline" style="width: 100%;">
+                            Назад к корзине
+                        </button>
+                    </form>
+
+                    <div id="checkoutButtons">
+                        <button onclick="showCheckoutForm()" class="btn btn-primary"
+                            style="width: 100%; margin-bottom: 1rem; font-size: 1.1rem; padding: 1rem;">
+                            Оформить заказ
+                        </button>
+
+                        <button onclick="cart.clearCart()" class="btn btn-outline" style="width: 100%;">
+                            Очистить корзину
+                        </button>
+                    </div>
+
+                    <div
+                        style="margin-top: 2rem; padding: 1rem; background: var(--gradient-soft); border-radius: var(--border-radius-sm);">
+                        <h4 style="margin-bottom: 0.5rem;">✨ Преимущества</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 0.5rem;">🚚 Бесплатная доставка от 3000₽</li>
+                            <li style="margin-bottom: 0.5rem;">✅ Гарантия качества</li>
+                            <li style="margin-bottom: 0.5rem;">↩️ Возврат в течение 14 дней</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О магазине</h3>
+                    <p>Детский Мир - это более 10 лет опыта в продаже качественных детских товаров. Мы заботимся о
+                        счастье ваших детей!</p>
+                   
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">О нас</a>
+                    <a href="contact.html">Контакты</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="favorites.html">Избранное</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <a href="catalog.html?category=toys">Игрушки</a>
+                    <a href="catalog.html?category=clothes">Одежда</a>
+                    <a href="catalog.html?category=books">Книги</a>
+                    <a href="catalog.html?category=accessories">Аксессуары</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (800) 555-35-35</p>
+                    <p>📧 info@detmir.ru</p>
+                    <p>📍 Москва, ул. Детская, 123</p>
+                    <p>🕐 Пн-Вс: 9:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Детский Мир. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Обновляем счетчик товаров в сайдбаре
+        function updateCartSummary() {
+            const itemsCount = document.getElementById('itemsCount');
+            if (itemsCount) {
+                itemsCount.textContent = cart.getItemCount();
+            }
+        }
+
+        // Показать форму оформления заказа
+        function showCheckoutForm() {
+            if (cart.items.length === 0) {
+                alert('Корзина пуста! Добавьте товары из каталога.');
+                return;
+            }
+            
+            document.getElementById('checkoutButtons').style.display = 'none';
+            document.getElementById('checkoutForm').style.display = 'block';
+        }
+
+        // Скрыть форму оформления заказа
+        function hideCheckoutForm() {
+            document.getElementById('checkoutForm').style.display = 'none';
+            document.getElementById('checkoutButtons').style.display = 'block';
+        }
+
+        // Обработка оформления заказа
+        function handleCheckout(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('orderName').value;
+            const phone = document.getElementById('orderPhone').value;
+            const email = document.getElementById('orderEmail').value;
+            const address = document.getElementById('orderAddress').value;
+            const comment = document.getElementById('orderComment').value;
+            
+            const confirmed = confirm(`Оформить заказ на сумму ${cart.getTotal()} ₽?\n\nДанные заказа:\nИмя: ${name}\nТелефон: ${phone}\nАдрес: ${address}`);
+            
+            if (confirmed) {
+                alert('Спасибо за заказ! Наш менеджер свяжется с вами в ближайшее время для подтверждения.');
+                cart.clearCart();
+                hideCheckoutForm();
+                document.getElementById('checkoutForm').reset();
+            }
+            
+            return false;
+        }
+
+        // Обновляем при загрузке
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartSummary();
+            // Обновляем каждую секунду на случай изменений
+            setInterval(updateCartSummary, 1000);
+        });
+    </script>
+</body>
+
+</html>

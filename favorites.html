@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Избранные товары - Детский Мир">
+    <title>Избранное - Детский Мир</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Детский Мир</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                <li><a href="delivery.html" class="nav-link">Доставка</a></li>
+                <li><a href="favorites.html" class="nav-link active">❤️ Избранное</a></li>
+                <li><a href="cart.html" class="btn btn-primary">🛒 Корзина (0)</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Заголовок -->
+    <section class="section" style="padding-top: 3rem;">
+        <div class="container">
+            <h1 class="section-title">Избранное ❤️</h1>
+            <p class="section-subtitle">Ваши любимые товары всегда под рукой</p>
+        </div>
+    </section>
+
+    <!-- Избранные товары -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div id="favoritesGrid" class="grid grid-3">
+                <!-- Товары будут загружаться через JavaScript -->
+            </div>
+
+            <!-- Если избранное пусто -->
+            <div id="emptyFavorites" style="display: none; text-align: center; padding: 4rem;">
+                <div style="font-size: 5rem; margin-bottom: 1rem;">❤️</div>
+                <h2>В избранном пока пусто</h2>
+                <p style="color: var(--gray); margin-bottom: 2rem;">Добавляйте товары в избранное, чтобы не потерять их</p>
+                <a href="catalog.html" class="btn btn-primary">Перейти в каталог</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Рекомендации -->
+    <section class="section" style="background: var(--gradient-soft);">
+        <div class="container">
+            <h2 class="section-title">Возможно, вам понравится 🌟</h2>
+            <p class="section-subtitle">Популярные товары, которые часто добавляют в избранное</p>
+
+            <div class="grid grid-3">
+                <a href="product.html?id=2" class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/product-constructor.jpg" alt="Конструктор" class="product-image">
+                        <span class="product-badge">Новинка</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Игрушки</div>
+                        <h3 class="product-title">Конструктор "Город мечты"</h3>
+                        <div class="product-price">2 499 ₽</div>
+                    </div>
+                </a>
+
+                <a href="product.html?id=5" class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/product-backpack.jpg" alt="Рюкзак" class="product-image">
+                        <span class="product-badge">Хит</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Аксессуары</div>
+                        <h3 class="product-title">Рюкзак "Космос"</h3>
+                        <div class="product-price">1 799 ₽</div>
+                    </div>
+                </a>
+
+                <a href="product.html?id=3" class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/product-dress.jpg" alt="Платье" class="product-image">
+                        <span class="product-badge">-15%</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Одежда</div>
+                        <h3 class="product-title">Платье "Принцесса"</h3>
+                        <div class="product-price">
+                            2 124 ₽
+                            <span class="product-price-old">2 499 ₽</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О магазине</h3>
+                    <p>Детский Мир - это более 10 лет опыта в продаже качественных детских товаров. Мы заботимся о
+                        счастье ваших детей!</p>
+                   
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">О нас</a>
+                    <a href="contact.html">Контакты</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="favorites.html">Избранное</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <a href="catalog.html?category=toys">Игрушки</a>
+                    <a href="catalog.html?category=clothes">Одежда</a>
+                    <a href="catalog.html?category=books">Книги</a>
+                    <a href="catalog.html?category=accessories">Аксессуары</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (800) 555-35-35</p>
+                    <p>📧 info@detmir.ru</p>
+                    <p>📍 Москва, ул. Детская, 123</p>
+                    <p>🕐 Пн-Вс: 9:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Детский Мир. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

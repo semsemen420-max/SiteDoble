@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Детский Мир - современный магазин детских товаров">
+    <title>Детский Мир - Карточка товара</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Детский Мир</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                <li><a href="delivery.html" class="nav-link">Доставка</a></li>
+                <li><a href="favorites.html" class="nav-link">❤️ Избранное</a></li>
+                <li><a href="cart.html" class="btn btn-primary">🛒 Корзина (0)</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Страница товара -->
+    <section class="section">
+        <div class="container">
+            <div id="productContainer">
+                <!-- Товар загружается через JavaScript -->
+                <div style="text-align: center; padding: 4rem;">
+                    <div style="font-size: 5rem; margin-bottom: 1rem;">🔄</div>
+                    <h2>Загрузка товара...</h2>
+                    <p style="color: var(--gray); margin-bottom: 2rem;">Пожалуйста, подождите</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Похожие товары -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Похожие товары 🎯</h2>
+
+            <div class="grid grid-4" id="similarProducts">
+                <!-- Похожие товары загружаются через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О магазине</h3>
+                    <p>Детский Мир - это более 10 лет опыта в продаже качественных детских товаров. Мы заботимся о
+                        счастье ваших детей!</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">▶️</a>
+                        <a href="#" class="social-link">💬</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">О нас</a>
+                    <a href="contact.html">Контакты</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="favorites.html">Избранное</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <a href="catalog.html?category=toys">Игрушки</a>
+                    <a href="catalog.html?category=clothes">Одежда</a>
+                    <a href="catalog.html?category=books">Книги</a>
+                    <a href="catalog.html?category=accessories">Аксессуары</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (800) 555-35-35</p>
+                    <p>📧 info@detmir.ru</p>
+                    <p>📍 Москва, ул. Детская, 123</p>
+                    <p>🕐 Пн-Вс: 9:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Детский Мир. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Получаем ID товара из URL
+        function getProductIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('id')) || 1;
+        }
+
+        // Загружаем товар по ID
+        function loadProduct() {
+            const productId = getProductIdFromUrl();
+            const product = products.find(p => p.id === productId);
+            
+            if (!product) {
+                document.getElementById('productContainer').innerHTML = `
+                    <div style="text-align: center; padding: 4rem;">
+                        <div style="font-size: 5rem; margin-bottom: 1rem;">❌</div>
+                        <h2>Товар не найден</h2>
+                        <p style="color: var(--gray); margin-bottom: 2rem;">Такого товара не существует</p>
+                        <a href="catalog.html" class="btn btn-primary">Перейти в каталог</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Обновляем заголовок страницы
+            document.title = `${product.name} - Детский Мир`;
+            
+            // Отображаем товар
+            document.getElementById('productContainer').innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                    <!-- Изображение товара -->
+                    <div>
+                        <div class="card" style="padding: 0; overflow: hidden;">
+                            <img src="images/${product.image}" alt="${product.name}" style="width: 100%; border-radius: var(--border-radius);">
+                        </div>
+                    </div>
+
+                    <!-- Информация о товаре -->
+                    <div>
+                        <div style="background: var(--primary-light); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                            ${getCategoryName(product.category)}
+                        </div>
+
+                        <h1 style="margin-bottom: 1rem;">${product.name}</h1>
+
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color); font-family: var(--font-heading);">
+                                ${product.price} ₽
+                            </div>
+                            ${product.oldPrice ? `
+                            <div style="font-size: 1.5rem; color: var(--gray); text-decoration: line-through;">
+                                ${product.oldPrice} ₽
+                            </div>
+                            ` : ''}
+                            ${product.badge ? `
+                            <div style="background: var(--gradient-primary); color: white; padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: 700;">
+                                ${product.badge}
+                            </div>
+                            ` : ''}
+                        </div>
+
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">
+                            Качественный товар для детей, изготовлен из безопасных материалов. Отличный подарок для вашего ребенка!
+                        </p>
+
+                        <div class="card" style="margin-bottom: 2rem;">
+                            <h3 style="margin-bottom: 1rem;">Характеристики:</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-gray); display: flex; justify-content: space-between;">
+                                    <span style="font-weight: 600;">Категория:</span>
+                                    <span>${getCategoryName(product.category)}</span>
+                                </li>
+                                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-gray); display: flex; justify-content: space-between;">
+                                    <span style="font-weight: 600;">Рекомендуемый возраст:</span>
+                                    <span>${getAgeText(product.age)}</span>
+                                </li>
+                                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-gray); display: flex; justify-content: space-between;">
+                                    <span style="font-weight: 600;">Материал:</span>
+                                    <span>Высококачественные безопасные материалы</span>
+                                </li>
+                                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-gray); display: flex; justify-content: space-between;">
+                                    <span style="font-weight: 600;">Производитель:</span>
+                                    <span>Детский Мир</span>
+                                </li>
+                                <li style="padding: 0.75rem 0; display: flex; justify-content: space-between;">
+                                    <span style="font-weight: 600;">Страна:</span>
+                                    <span>Россия</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                            <button class="btn btn-primary" style="flex: 1;" onclick="addToCart(${product.id})">
+                                🛒 Добавить в корзину
+                            </button>
+                            <button class="btn btn-outline" onclick="toggleFavorite(${product.id})">
+                                ${favorites.isInFavorites(product.id) ? '❤️ В избранном' : '🤍 В избранное'}
+                            </button>
+                        </div>
+
+                        <div class="card" style="background: var(--gradient-soft);">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                                <div>
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚚</div>
+                                    <div style="font-size: 0.875rem; font-weight: 600;">Доставка 1-3 дня</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                                    <div style="font-size: 0.875rem; font-weight: 600;">Гарантия качества</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">↩️</div>
+                                    <div style="font-size: 0.875rem; font-weight: 600;">Возврат 30 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Показываем похожие товары
+            showSimilarProducts(product);
+        }
+        
+        function getAgeText(age) {
+            const ages = {
+                '0-2': '0-2 года',
+                '3-5': '3-5 лет',
+                '6-9': '6-9 лет',
+                '10+': '10+ лет'
+            };
+            return ages[age] || age;
+        }
+        
+        function showSimilarProducts(currentProduct) {
+            const similar = products
+                .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
+                .slice(0, 4);
+            
+            const container = document.getElementById('similarProducts');
+            if (!container) return;
+            
+            if (similar.length === 0) {
+                container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: var(--gray);">Нет похожих товаров</p>';
+                return;
+            }
+            
+            container.innerHTML = similar.map(product => `
+                <a href="product.html?id=${product.id}" class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/${product.image}" alt="${product.name}" class="product-image">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${getCategoryName(product.category)}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">
+                            ${product.price} ₽
+                            ${product.oldPrice ? `<span class="product-price-old">${product.oldPrice} ₽</span>` : ''}
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+        
+        // Глобальные функции для кнопок
+        window.addToCart = function(productId) {
+            cart.addItem(productId);
+        };
+        
+        window.toggleFavorite = function(productId) {
+            favorites.addItem(productId);
+            // Обновляем текст кнопки
+            const button = document.querySelector('button[onclick*="toggleFavorite"]');
+            if (button) {
+                button.textContent = favorites.isInFavorites(productId) ? '❤️ В избранном' : '🤍 В избранное';
+            }
+        };
+        
+        // Загружаем товар при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadProduct);
+    </script>
+</body>
+
+</html>
